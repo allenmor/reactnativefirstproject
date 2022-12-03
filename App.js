@@ -1,31 +1,46 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+  FlatList
+} from "react-native";
+import { useState } from "react";
+import GoalInput from "./components/GoalInput";
 
+import GoalItem from "./components/GoalItem";
 export default function App() {
+  const [courseGoals, setCourseGoals] = useState([]);
+
+
+
+
+
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>Another Text</Text>
+    <View style={styles.appContainer}>
+      <GoalInput setCourseGoals={setCourseGoals} />
+      <View style={styles.goalsContainer}>
+        <FlatList data={courseGoals} renderItem={(itemData => {
+          itemData.index
+          return (
+            <GoalItem text={itemData.item} />
+          )
+        })} alwaysBounceVertical={false}>
+        </FlatList>
       </View>
-      <Text
-        style={{
-          margin: 16,
-          borderWidth: 2,
-          borderColor: "red",
-          padding: 16,
-        }}
-      >
-        Hello
-      </Text>
-      <Button title="Tap" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
+  goalsContainer: {
+    flex: 5,
+  }
 });
