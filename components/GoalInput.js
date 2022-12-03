@@ -11,6 +11,7 @@ function GoalInput({ setCourseGoals}) {
       }
       function addGoalHandler() {
         setCourseGoals((prev) => [...prev, enteredGoal]);
+        setEnteredGoal('')
       }
     
     return (
@@ -19,6 +20,7 @@ function GoalInput({ setCourseGoals}) {
           onChangeText={goalInputHandler}
           style={styles.textInput}
           placeholder="Your Goal IS HERE"
+          value={enteredGoal}
         />
         <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
