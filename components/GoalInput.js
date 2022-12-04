@@ -10,11 +10,12 @@ function GoalInput({ setCourseGoals}) {
         setEnteredGoal(e);
       }
       function addGoalHandler() {
-        setCourseGoals((prev) => [...prev, enteredGoal]);
+        setCourseGoals((prev) => [...prev, {text: enteredGoal, id: Math.random().toString()}]);
         setEnteredGoal('')
       }
     
     return (
+
         <View style={styles.inputContainer}>
         <TextInput
           onChangeText={goalInputHandler}
@@ -24,6 +25,7 @@ function GoalInput({ setCourseGoals}) {
         />
         <Button onPress={addGoalHandler} title="Add Goal" />
       </View>
+
     )
 }
 
